@@ -5,9 +5,9 @@ spring:
   application:
     name: fraud
   datasource:
-    username: user
+    username: postgres
     url: jdbc:postgresql://localhost:5432/fraud
-    password: pass
+    password: angel
 
   jpa:
     hibernate:
