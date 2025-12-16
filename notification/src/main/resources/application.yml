@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: notification
+  rabbitmq:
+    addresses: localhost:5672
   datasource:
     password: angel
     url: jdbc:postgresql://localhost:5432/notification
@@ -27,3 +29,10 @@ management:
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queues:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key
