@@ -20,3 +20,7 @@ Greenwich	2.1.x
 Finchley	2.0.x
 Edgware	1.5.x
 Dalston	1.5.x
+
+
+curl -sSL https://zipkin.io/quickstart.sh | bash -s
+java -jar zipkin.jar

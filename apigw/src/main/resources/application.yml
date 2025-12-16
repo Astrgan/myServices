@@ -1,0 +1,32 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    web-application-type: reactive  # Важно! Указываем reactive тип
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: customer-service
+          uri: lb://CUSTOMER
+          predicates:
+            - Path=/api/v1/customers/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8764/eureka
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans

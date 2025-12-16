@@ -2,6 +2,7 @@ package ru.services.customer;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.vasilev.clients.fraud.FraudCheckResponse;
@@ -37,6 +38,8 @@ public class CustomerService {
             throw new IllegalStateException("fraudster");
 
         log.info("registerCustomer");
+        log.info("traceId from MDC = {}", MDC.get("traceId"));
+        log.info("spanId from MDC = {}", MDC.get("spanId"));
 
         // todo: make it async. i.e add to queue
         notificationClient.sendNotification(
